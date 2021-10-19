@@ -1,0 +1,147 @@
+<html>
+
+<head>
+<link href="https://www.edcc.edu/_resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://www.edcc.edu/_resources/css/custom.css" rel="stylesheet" type="text/css" />
+<link href="https://www.edcc.edu/_resources/css/custom-test.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://www.edcc.edu/_resources/css/ie10-viewport-bug-workaround.css" type="text/css" />
+<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/_resources/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/_resources/js/custom.js"></script>
+<script type="text/javascript" src="/_resources/js/jquery.easing.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script> 
+<script type="text/javascript" src="/_resources/js/less.min.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="/_resources/js/flexslider.js"></script>
+    <style>
+    @media (min-width: 768px) and (max-width: 992px) {
+        section.students-hero .jumbotron .stu-overlay-content div.student-quicklinks { }
+        section.students-hero .jumbotron .stu-overlay-content div.student-quicklinks h2 { margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-size: 1.50rem;}
+        section.students-hero .jumbotron .stu-overlay-content div.student-quicklinks h5 { font-size: 1.0rem;}
+        section.students-hero .jumbotron .stu-overlay-content div.student-quicklinks small { font-size: 65%;}
+        section.students-hero .jumbotron .stu-overlay-content div.student-quicklinks { line-height: 0.7rem;}
+        section.students-hero .jumbotron .stu-overlay-content div.student-quicklinks { padding-top: 0px !important;}
+    }
+    @media (min-width: 1200px) {
+        section.students-hero .jumbotron {
+            padding: 2rem 2rem 4rem 2rem;
+        }
+    }
+    @media (max-width: 1199px) and (min-width: 992px) {
+        section.students-hero .jumbotron {
+            padding: 6rem 2rem;
+        }
+    }   
+
+   
+    </style>
+
+<style>
+.search-box ul {overflow: visible;}
+.search-select::before {display: table; box-sizing: border-box;}
+.search-select li {}
+.search-select li a {display: block; border: 1px solid black; overflow: break-word; word-wrap: break-word; word-break: break-word; }
+.search-select li:active {background-color: blue; }
+.search-select > li {float: left;}
+</style>
+
+</head>
+
+<body>
+<title>Library</title><section class="students-hero"><div class="jumbotron overlay-40"><img class="simple-image" src="{{f:18801302}}" alt="Library Hero Image" /><div class="container relative heading-centered"><div class="stu-overlay-content"><div class="row head-comp"><h1 class="text-centered lighter">LIBRARY</h1><div class="student-quicklinks pad-4-both"><div class="col-sm-12 col-md-8 col-lg-8"><h2 class="margin-2-top margin-2-bottom text-centered lighter">One Search for books, e-books, articles, and films</h2>
+
+<div class="search-box">
+    <ul class="search-select">
+        <li class="active">
+            <a id="search_all" class="search_everything" href="#all" role="tab" data-toggle="tab">Books, Articles, and More</a>
+        </li>
+        <li>
+            <a id="search_cr" class="search_coursereserves" href="#cr" role="tab" data-toggle="tab">Course Reserves and Textbooks</a>
+        </li>
+    </ul>
+    <div class="input">
+        <form id="simple" action="https://sbctc-edcc.primo.exlibrisgroup.com/discovery/search?" enctype="application/x-www-form-urlencoded; charset=utf-8" method="get" name="searchForm" target="_self" onsubmit="searchPrimo()"></form>
+    </div>
+</div>
+
+<script>
+    function search_source_clicked(event) {
+    // user chose a button in the grey dropdown on the left side dropdown.
+    var target = event.target;
+    var search_type = jQuery(target).data('search_type');
+    set_search_source(search_type);
+    }
+</script>
+
+
+    <input name="institution" type="hidden" value="01STATEWA_EDCC" /> 
+    <input name="vid" type="hidden" value="01STATEWA_EDCC:EDMONDS" /> 
+
+   
+    <!-- Old search selector 
+    <select id="selected" name="search_scope" aria-label="search scope" style='color: black; padding: 10px;'>
+        <option value="MyInst_and_CI">Everything</option>
+        <option value="CourseReserves">Course Reserves</option>
+    </select>
+        -->
+
+    <!-- Fixed parameters --> 
+    <input name="search_scope" type="hidden" value="search_type" />
+    <input name="displayMode" type="hidden" value="full" /> 
+    <input name="bulkSize" type="hidden" value="10" /> 
+    <input name="highlight" type="hidden" value="true" /> 
+    <input name="dum" type="hidden" value="true" /> 
+    <input name="tab" value="Everything" type="hidden" />
+    <input id="primoQuery" name="query" type="hidden" /> 
+    <input name="displayField" type="hidden" value="all" /> 
+    <!-- Enable this if "Expand My Results" is enabled by default in Views Wizard --> 
+    <input name="pcAvailabiltyMode" type="hidden" value="false" /> 
+    <input class="field form-control" id="primoQueryTemp" aria-label="search text" size="35" type="text" value="" /> 
+    <!-- Search Button --> 
+    <input style="margin-top: 20px;" id="go" title="Search" alt="Search" class="submit btn btn-primary" type="submit" value="SEARCH" onclick="searchPrimo()" />
+</form>
+
+<script type="text/javascript">
+    function searchPrimo() {
+    document.getElementById("primoQuery").value = "any,contains," + document.getElementById("primoQueryTemp").value;
+    document.forms["searchForm"].submit();
+    }
+    function searchKeyPress(e) {
+    if (typeof e == 'undefined' &amp;&amp; window.event) {
+    e = window.event;
+    }
+    if (e.keyCode == 13) {
+    document.getElementById('go').click();
+    }
+    }
+    $(function() {
+    $("#selected").change(function () {
+    var option = $('option:selected', this).attr('datatab');
+    <!-- var tabsetting = $(this).val() == find('option:selected').attr('data-tab'); -->
+    $("#tabset").val(option);
+    });
+    });
+</script>
+
+</div>
+
+<div class="col-sm-12 col-md-4 col-lg-4" style="background-color: #ffffff;">              											
+<h5>Library Hours</h5>                                            
+<hr class="hr-sm dark">                            
+<p style="margin-top: 0px; font-weight: 400; font-size: 18px;"><strong>Summer Quarter Open Hours<br></strong>Monday-Thursday: 8 a.m.- 6 p.m.<br>Friday: Closed<br>Saturday: 10 a.m.- 2 p.m.<br>Sunday: Closed<br><strong><br>Holiday Closure</strong><br>We will be closed on Thursday, July 4. We will be <strong>open</strong> on Friday, July 5, 10 a.m.-2 p.m.
+</p>                                
+<h5>Library Location</h5>                                
+<hr class="hr-sm dark">
+
+<p style="font-weight: 400; font-size: 18px;"><a href="/campus/default.html">Lynnwood Hall</a>: third and fourth floors
+</p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</body>
+</html>
